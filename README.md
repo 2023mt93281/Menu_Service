@@ -1,223 +1,97 @@
 # Menu_Service
 
-Menu Service
+## Overview
 
-This is a simple Menu Microservice built with Node.js, Express, and MongoDB for managing the menu of a food delivery platform. It provides endpoints for managing menu items, such as adding, updating, deleting, and querying menu items based on filters like availability and price.
+**Menu Service** is a microservice built using 
+- **Node.js**, 
+- **Express**, and 
+- **MongoDB**, 
+designed to manage food menu items for a food delivery platform. This service enables users to create, read, update, delete, and filter menu items based on availability and price.
 
-Features
-CRUD operations for Menu Items:
+---
 
-Create, Read, Update, Delete
+## Features
 
-Filtering:
+- **CRUD Operations** for menu items
+- **Filtering Support**:
+  - By availability (`true` / `false`)
+  - By price range (`minPrice`, `maxPrice`)
+- **MongoDB Integration** using Mongoose
+- Lightweight and modular Express setup
+- Easily testable with Postman
 
-Filter menu items by availability (true/false)
+---
 
-Filter menu items by price (greater than, less than, or within a range)
+## Table of Contents
 
-Data validation using Mongoose
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [API Endpoints](#api-endpoints)
+- [How to Use](#how-to-use)
 
-MongoDB as the database for persistent storage
+---
 
-Table of Contents
-Installation
+## Installation
 
-Configuration
+### 1. Clone the Repository
 
-Endpoints
-
-How to Use
-
-Testing with Postman
-
-Tech Stack
-
-License
-
-Installation
-Follow these steps to set up and run the Menu Service locally.
-
-Clone the repository:
-
-bash
-Copy
-Edit
+```bash
 git clone https://github.com/yourusername/Menu_Service.git
 cd Menu_Service
-Install dependencies:
+```
 
-bash
-Copy
-Edit
+### 2. Install Dependencies
+```bash
 npm install
-Set up MongoDB:
+```
 
-Ensure you have MongoDB running locally or use a MongoDB service like MongoDB Atlas.
-
-Set the MongoDB URI in the .env file:
-
-env
-Copy
-Edit
-MONGODB_URI=mongodb://localhost:27017/menuServiceDB
-Start the server:
-
-bash
-Copy
-Edit
-npm start
-The server will start on http://localhost:3001.
-
-Configuration
-The configuration is stored in the .env file.
-
-env
-Copy
-Edit
+### 3. Set Up MongoDB
+```bash
 PORT=3001
 MONGODB_URI=mongodb://localhost:27017/menuServiceDB
-Endpoints
-1. Create Menu Item
-Method: POST
+```
 
-URL: /api/menu
+### 4. Start the Server
+```bash
+npm start
+```
+The server will run on http://localhost:3001.
 
-Body (JSON):
 
-json
-Copy
-Edit
-{
-  "name": "Margherita Pizza",
-  "description": "Classic cheese pizza with tomato",
-  "price": 199,
-  "available": true
-}
-Response:
+## Configuration
+All configuration is managed via the .env file.
 
-Status: 201 Created
+```bash
+PORT=3001
+MONGODB_URI=mongodb://localhost:27017/menuServiceDB
+```
 
-Body: The created menu item object.
+## API Endpoints
 
-2. Get All Menu Items
-Method: GET
+### 🔧 CRUD Endpoints
 
-URL: /api/menu
+| Method | Endpoint             | Description                              |
+|--------|----------------------|------------------------------------------|
+| POST   | /api/menu            | Create a new menu item                   |
+| GET    | /api/menu            | Get all menu items (supports filtering)  |
+| PUT    | /api/menu/item_id    | Update a menu item by ID                 |
+| DELETE | /api/menu/item_id    | Delete a menu item by ID                 |
+| PUT    | /api/menu/:name      | Update a menu item by name               |
+| DELETE | /api/menu/:name      | Delete a menu item by name               |
 
-Query Parameters:
+---
 
-available: Filter items by availability (true or false)
+### 🔍 Filtering Supported Endpoints – Examples
 
-minPrice: Minimum price filter
+| Method | Endpoint                         | Description                                |
+|--------|----------------------------------|--------------------------------------------|
+| GET    | /api/menu?available=true         | Get **Available** menu items               |
+| GET    | /api/menu?minPrice=200           | Get menu items of Price **more than** ₹200     |
+| GET    | /api/menu?maxPrice=500           | Get menu items of Price **less than** ₹500     |
 
-maxPrice: Maximum price filter
 
-Example:
+## How to Use
 
-/api/menu?available=true&minPrice=100&maxPrice=300
-
-Response:
-
-Status: 200 OK
-
-Body: List of menu items that match the filters.
-
-3. Update Menu Item by Name
-Method: PUT
-
-URL: /api/menu/:name
-
-Body (JSON):
-
-json
-Copy
-Edit
-{
-  "price": 250,
-  "available": false
-}
-Response:
-
-Status: 200 OK
-
-Body: The updated menu item object.
-
-4. Delete Menu Item by Name
-Method: DELETE
-
-URL: /api/menu/:name
-
-Response:
-
-Status: 200 OK
-
-Body: A confirmation message.
-
-How to Use
-Start the server using npm start.
-
-Use Postman to make requests to the available endpoints.
-
-Make sure you have MongoDB running and connected (locally or via MongoDB Atlas).
-
-Testing with Postman
-You can test the API using Postman. Here are the steps:
-
-1. Create a Menu Item
-Method: POST
-
-URL: http://localhost:3001/api/menu
-
-Body (raw JSON):
-
-json
-Copy
-Edit
-{
-  "name": "Peppy Paneer",
-  "description": "Paneer pizza with spicy toppings",
-  "price": 269,
-  "available": true
-}
-2. Get All Menu Items
-Method: GET
-
-URL: http://localhost:3001/api/menu
-
-3. Filter by Price
-Method: GET
-
-URL: http://localhost:3001/api/menu?minPrice=200&maxPrice=300
-
-4. Update a Menu Item by Name
-Method: PUT
-
-URL: http://localhost:3001/api/menu/Peppy Paneer
-
-Body (raw JSON):
-
-json
-Copy
-Edit
-{
-  "price": 279,
-  "available": false
-}
-5. Delete a Menu Item by Name
-Method: DELETE
-
-URL: http://localhost:3001/api/menu/Peppy Paneer
-
-Tech Stack
-Node.js – Backend runtime environment
-
-Express – Web framework for Node.js
-
-MongoDB – Database for persistent storage
-
-Mongoose – ODM for MongoDB
-
-Postman – Tool for API testing
-
-License
-This project is licensed under the MIT License – see the LICENSE file for details.
+1. Start the server using npm start.
+2. Use Postman or any REST client to make API calls.
+3. Ensure MongoDB is connected and accessible locally or through a cloud provider.
