@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 3001
 
 # Set environment variable to bind to 0.0.0.0
 ENV HOST=0.0.0.0
