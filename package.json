@@ -1,0 +1,34 @@
+{
+    "name": "menu-service",
+    "version": "1.0.0",
+    "description": "A simple menu microservice for a food delivery app using Node.js, Express, and MongoDB.",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "keywords": [
+        "menu",
+        "microservice",
+        "express",
+        "mongodb",
+        "food-delivery"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^16.5.0",
+        "express": "^4.21.2",
+        "mongoose": "^7.8.7"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/2023mt93281/Menu_Service.git"
+    },
+    "bugs": {
+        "url": "https://github.com/2023mt93281/Menu_Service/issues"
+    },
+    "homepage": "https://github.com/2023mt93281/Menu_Service#readme"
+}
