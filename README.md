@@ -36,7 +36,7 @@ designed to manage food menu items for a food delivery platform. This service en
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/Menu_Service.git
+git clone https://github.com/2023mt93281/Menu_Service.git
 cd Menu_Service
 ```
 
