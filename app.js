@@ -11,10 +11,12 @@ const app = express();
 app.use(express.json());
 
 // Connect DB
-connectDB();
+connectDB()
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
 app.use('/api/menu', menuRoutes);  
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

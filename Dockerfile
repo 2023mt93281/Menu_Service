@@ -14,11 +14,11 @@ RUN npm install
 COPY . .
 
 # Set environment variable to bind to 0.0.0.0
-ENV HOST=0.0.0.0
-ENV PORT=3001
+# ENV HOST=127.0.0.1
+ENV PORT=3000
 
 # Expose the port the app runs on
-EXPOSE 3001
+EXPOSE 3000
 
 # Start the application
 CMD ["npm", "start"]
