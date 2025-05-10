@@ -8,6 +8,10 @@ exports.getAllMenuItems = async (req, res) => {
       filter.available = req.query.available === 'true';
     }
 
+    if (req.query.restaurantId) {
+      filter.restaurantId = req.query.restaurantId;
+    }
+
     if (req.query.minPrice || req.query.maxPrice) {
       filter.price = {};
       if (req.query.minPrice) {
